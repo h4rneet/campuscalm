@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Campus Calm </title>
+  <style>
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background:#0f1220;
+      color:#f4f4ff;
+    }
+    .wrap{
+      max-width:900px;
+      margin:0 auto;
+      padding:40px 18px;
+    }
+    h1{
+      margin:0 0 10px;
+      font-size: clamp(28px, 3vw, 42px);
+    }
+    p{
+      margin:0 0 22px;
+      color:rgba(244,244,255,.75);
+      font-size: 16px;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap:14px;
+      margin-top: 18px;
+    }
+    .mood{
+      border:1px solid rgba(255,255,255,.22);
+      background: rgba(255,255,255,.08);
+      border-radius:18px;
+      padding:16px;
+    }
+    .blob{
+      width:56px;
+      height:56px;
+      border-radius: 55% 45% 50% 50% / 45% 55% 45% 55%;
+      background: rgba(255,255,255,.22);
+      margin-bottom: 10px;
+    }
+    .label{
+      font-weight:600;
+      margin:0;
+      color:#f4f4ff;
+    }
+    .note{
+      margin-top:26px;
+      font-size: 13px;
+      color: rgba(244,244,255,.6);
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <h1>Welcome — how are you doing today?</h1>
+    <p>Pick whatever feels closest. </p>
+
+    <section class="grid" aria-label="Mood options">
+      <div class="mood">
+        <div class="blob"></div>
+        <p class="label">Feeling good</p>
+      </div>
+
+      <div class="mood">
+        <div class="blob"></div>
+        <p class="label">Not sure</p>
+      </div>
+
+      <div class="mood">
+        <div class="blob"></div>
+        <p class="label">Overwhelmed</p>
+      </div>
+
+      <div class="mood">
+        <div class="blob"></div>
+        <p class="label">Rough day</p>
+      </div>
+    </section>
+
+  </main>
+</body>
+</html>
