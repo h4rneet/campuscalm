@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;500&display=swap');
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(180deg, #0f172a, #1e293b, #312e81);
+  color: white;
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  text-align: center;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 30px 40px;
+  border-radius: 25px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 30px rgba(0,0,0,0.5);
+}
+
+h1 {
+  font-size: 28px;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #c7d2fe;
+  margin-bottom: 20px;
+}
+
+textarea {
+  width: 320px;
+  height: 140px;
+  padding: 12px;
+  border-radius: 15px;
+  border: none;
+  background: rgba(255,255,255,0.1);
+  color: white;
+  resize: none;
+  outline: none;
+  font-size: 14px;
+}
+
+textarea::placeholder {
+  color: #94a3b8;
+}
+
+button {
+  margin-top: 15px;
+  padding: 10px 25px;
+  border-radius: 999px;
+  border: none;
+  background: #a5b4fc;
+  color: #1e1b4b;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+button:hover {
+  background: #818cf8;
+  transform: scale(1.05);
+}
+
+#affirmation {
+  margin-top: 15px;
+  color: #bbf7d0;
+  display: none;
+  font-size: 14px;
+}
