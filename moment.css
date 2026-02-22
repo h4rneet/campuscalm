@@ -1,0 +1,317 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;500&display=swap');
+
+/* ---------- Base / Theme ---------- */
+:root {
+  --bg-1: #0f172a;
+  --bg-2: #1e293b;
+  --bg-3: #312e81;
+
+  --text: #ffffff;
+  --muted: #c7d2fe;
+
+  --glass: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.15);
+
+  --accent-1: #a5b4fc;   /* lavender */
+  --accent-2: #7dd3fc;   /* sky */
+  --ring-track: rgba(255,255,255,0.10);
+
+  --orb-min: 0.88;       /* orb scale min */
+  --orb-max: 1.16;       /* slightly less expansion for smaller feel */
+}
+
+* { box-sizing: border-box; }
+
+html, body { height: 100%; }
+
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: var(--text);
+  background: linear-gradient(180deg, var(--bg-1), var(--bg-2), var(--bg-3));
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+/* ---------- Glass Container Card ---------- */
+.container {
+  position: relative;
+  z-index: 2;
+
+  width: min(92vw, 520px);
+  padding: 26px 22px 20px;
+
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: 26px;
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  box-shadow:
+    0 10px 30px rgba(0,0,0,0.25),
+    inset 0 1px 0 rgba(255,255,255,0.05);
+
+  text-align: center;
+}
+
+/* ---------- Floating Background Shapes — autonomous, infinite ---------- */
+.floaters {
+  position: fixed;
+  inset: -15% -10%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.floaters li {
+  position: absolute;
+  width: clamp(90px, 14vw, 170px);
+  aspect-ratio: 1 / 1;
+  background: rgba(255,255,255,0.06);
+  filter: blur(9px);
+  border-radius: 40% 60% 65% 35% / 48% 52% 48% 52%;
+
+  /* Each shape floats forever along a closed path */
+  animation: float-loop 26s ease-in-out infinite;
+  will-change: transform;
+  opacity: 0.9;
+}
+
+/* Staggered positions, sizes, and durations for natural variation */
+.floaters li:nth-child(1) { top: 8%;  left: 10%; animation-duration: 28s; transform: translate3d(0,0,0) scale(1.05); }
+.floaters li:nth-child(2) { top: 40%; right: 8%; animation-duration: 30s; transform: translate3d(0,0,0) scale(0.95); }
+.floaters li:nth-child(3) { bottom: 10%; left: 6%; animation-duration: 32s; transform: translate3d(0,0,0) scale(1.10); }
+.floaters li:nth-child(4) { bottom: 24%; right: 16%; animation-duration: 29s; transform: translate3d(0,0,0) scale(0.98); }
+.floaters li:nth-child(5) { top: 52%; left: 36%; animation-duration: 34s; transform: translate3d(0,0,0) scale(1.00); }
+
+/* A gentle figure‑8 style loop so the motion feels organic and endless */
+@keyframes float-loop {
+  0%   { transform: translate3d(  0px,   0px, 0) rotate(0deg)    scale(1.00); }
+  20%  { transform: translate3d( 14px, -10px, 0) rotate(1.5deg)  scale(1.01); }
+  40%  { transform: translate3d(-10px,  12px, 0) rotate(-1.5deg) scale(1.00); }
+  60%  { transform: translate3d( 16px,   6px, 0) rotate(1.0deg)  scale(1.02); }
+  80%  { transform: translate3d(-12px,  -8px, 0) rotate(-1.0deg) scale(0.99); }
+  100% { transform: translate3d(  0px,   0px, 0) rotate(0deg)    scale(1.00); }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .floaters li { animation: none !important; transform: none !important; }
+}
+/* ---------- Stage (ring + orb + cues) ---------- */
+.stage {
+  display: grid;
+  place-items: center;
+  gap: 6px;
+  padding: 12px 8px 4px;                /* tighter */
+}
+
+.ring {
+  position: relative;
+  width: clamp(190px, 36vw, 280px);     /* smaller ring */
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  background: var(--ring-track);
+  display: grid;
+  place-items: center;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.06);
+  overflow: hidden;
+}
+
+.ring::before {
+  content: "";
+  position: absolute;
+  inset: 12px;                          /* tighter inner gap */
+  border-radius: 50%;
+  background: rgba(255,255,255,0.04);
+}
+
+.ring__progress {
+  --angle: 0deg;
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background:
+    conic-gradient(from -90deg,
+      var(--accent-1),
+      var(--accent-2) var(--angle),
+      transparent var(--angle));
+  mask: radial-gradient(circle at center, transparent 66%, black 67%);
+  -webkit-mask: radial-gradient(circle at center, transparent 66%, black 67%);
+  filter: drop-shadow(0 0 10px rgba(0,0,0,0.1));
+}
+
+/* Replace your current .orb block with this */
+.orb {
+  position: absolute;
+  width: clamp(130px, 26vw, 220px);
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 40% 30%, rgba(255,255,255,0.24), rgba(255,255,255,0) 55%),
+    radial-gradient(circle at 60% 65%, rgba(255,255,255,0.12), rgba(255,255,255,0) 65%),
+    linear-gradient(160deg, var(--accent-1), var(--accent-2));
+  box-shadow: 0 0 22px rgba(165, 180, 252, 0.32);
+  transform: scale(var(--orb-min));
+  /* Keep a minimal default; JS will set exact duration per phase */
+  transition: transform 0.001s linear;
+  will-change: transform, filter;
+}
+
+.cue {
+  margin-top: 10px;
+  font-size: 16px;                      /* smaller text */
+  font-weight: 500;
+}
+
+.subcue {
+  font-size: 13px;
+  color: var(--muted);
+  min-height: 18px;
+}
+
+/* ---------- Controls ---------- */
+.controls {
+  margin-top: 6px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 8px;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn {
+  background: #a5b4fc;
+  color: #1e1b4b;
+  font-weight: bold;
+  border: none;
+  border-radius: 999px;
+  padding: 8px 14px;                    /* smaller buttons */
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s, opacity 0.2s;
+  font-size: 14px;
+}
+
+.btn:hover { background: #818cf8; transform: scale(1.05); }
+.btn:active { transform: scale(1.0); }
+
+.btn[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn--ghost {
+  background: transparent;
+  color: #e5e7eb;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.label {
+  font-size: 12px;
+  color: var(--muted);
+  margin-right: 6px;
+}
+
+.select {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.18);
+  color: white;
+  border-radius: 10px;
+  padding: 6px 10px;
+  cursor: pointer;
+  font-size: 14px;
+  backdrop-filter: blur(10px);
+
+  /* removes default OS styles */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.select option {
+  background: #1e293b; /* dark glass-like tone */
+  color: white;
+}
+
+.select:focus {
+  outline: none;
+  border-color: #a5b4fc;
+  box-shadow: 0 0 0 2px rgba(165,180,252,0.25);
+}
+
+/* ---------- Footer ---------- */
+.quote {
+  margin: 14px auto 6px;
+  color: #bbf7d0;
+  font-size: 13px;                      /* smaller quote text */
+  font-style: italic;
+  max-width: 60ch;
+}
+
+.back { margin: 4px 0 0; }
+.backlink { color: #c7d2fe; text-decoration: none; font-size: 14px; }
+.backlink:hover { text-decoration: underline; }
+
+/* ---------- Reduced Motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .floaters li { animation: none !important; }
+  .orb, .ring__progress { transition: none !important; }
+}
+
+header {
+  text-align: center;
+  margin-bottom: 6px;
+}
+
+h1 {
+  margin: 0;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+.subtitle {
+  margin-top: 4px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.circles{
+  position: fixed;
+  inset: 0;
+  list-style:none;
+  margin:0;
+  padding:0;
+  z-index:0;
+}
+
+.circles li{
+  position:absolute;
+  bottom:-180px;
+  background: rgba(165,180,252,0.08);
+  border-radius: 40% 60% 65% 35% / 48% 52% 48% 52%;
+  animation: rise 28s linear infinite;
+  opacity:0;
+  filter: blur(6px);
+}
+
+.circles li:nth-child(1){left:10%;width:90px;height:90px;animation-duration:22s}
+.circles li:nth-child(2){left:25%;width:40px;height:40px;animation-duration:28s}
+.circles li:nth-child(3){left:40%;width:70px;height:70px;animation-duration:24s}
+.circles li:nth-child(4){left:55%;width:30px;height:30px;animation-duration:30s}
+.circles li:nth-child(5){left:70%;width:85px;height:85px;animation-duration:26s}
+.circles li:nth-child(6){left:85%;width:50px;height:50px;animation-duration:32s}
+.circles li:nth-child(7){left:15%;width:60px;height:60px;animation-duration:27s}
+.circles li:nth-child(8){left:35%;width:25px;height:25px;animation-duration:34s}
+.circles li:nth-child(9){left:65%;width:45px;height:45px;animation-duration:29s}
+.circles li:nth-child(10){left:80%;width:75px;height:75px;animation-duration:31s}
+
+@keyframes rise{
+  0%{transform:translateY(0) rotate(0);opacity:0}
+  20%{opacity:.7}
+  50%{transform:translateY(-55vh) rotate(180deg)}
+  100%{transform:translateY(-115vh) rotate(360deg);opacity:0}
+}
