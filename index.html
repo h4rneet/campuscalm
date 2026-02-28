@@ -15,7 +15,7 @@
     body{
       margin:0;
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background:#0f1220;
+      background:#5F4D7D;
       color:#f4f4ff;
     }
     .wrap{
@@ -125,10 +125,38 @@
       justify-content: center;
     }
 
+
+    .mainLogo {           /* styles the container of the logo */
+      display: flex;
+      justify-content: center;
+      margin-bottom: 22px;
+    }
+
+    .mainLogo img {     /* styles the logo image itself*/
+      width: 250px;      /* adjust if needed */
+      max-width: 60%;
+      height: auto;
+    }
+
+    .mainLogo img {
+      animation: float 4s ease-in-out infinite; /* float is the name of the animation which we defined with keyframes */
+    }
+
+    @keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-6px); }
+    100% { transform: translateY(0px); }
+    }
+
   </style>
 </head>
 <body>
   <main class="wrap">
+
+  <div class="mainLogo">
+    <img src="assets/logo.svg" alt="Campus Calm logo">
+  </div>
+
   <h1 class="welcomemessage"> Welcome, how are you doing today? </h1>
     <p class = "welcomesentence"> Pick whatever feels closest. </p>
 
