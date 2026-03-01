@@ -148,6 +148,12 @@
     100% { transform: translateY(0px); }
     }
 
+    .moodLink{
+      text-decoration: none;   /* remove underline */
+      color: inherit;          /* keep text styling */
+      display: block;          /* clickable area behaves like a block */
+    }
+
   </style>
 </head>
 <body>
@@ -161,41 +167,51 @@
     <p class = "welcomesentence"> Pick whatever feels closest. </p>
 
 <section class="grid" aria-label="Mood options">
-  <div class="mood">
+
+  <a class="mood moodLink" href="modes.html?mood=good">
     <div class="cardOuter">
       <div class="cardInner">
-        <img class="blobimg" src="assets/mood-blobs/feeling-good.svg" alt="Feeling good blob">
+        <img class="blobimg"
+             src="assets/mood-blobs/feeling-good.svg"
+             alt="Feeling good blob">
       </div>
       <p class="label">Feeling Good</p>
     </div>
-  </div>
+  </a>
 
-  <div class="mood">
+  <a class="mood moodLink" href="modes.html?mood=rough">
     <div class="cardOuter">
       <div class="cardInner">
-        <img class="blobimg" src="assets/mood-blobs/sad.svg" alt="Rough day blob">
+        <img class="blobimg"
+             src="assets/mood-blobs/sad.svg"
+             alt="Rough day blob">
       </div>
       <p class="label">Rough Day</p>
     </div>
-  </div>
+  </a>
 
-  <div class="mood">
+  <a class="mood moodLink" href="modes.html?mood=overwhelmed">
     <div class="cardOuter">
       <div class="cardInner">
-        <img class="blobimg" src="assets/mood-blobs/overwhelmed.svg" alt="Overwhelmed blob">
+        <img class="blobimg"
+             src="assets/mood-blobs/overwhelmed.svg"
+             alt="Overwhelmed blob">
       </div>
       <p class="label">Overwhelmed</p>
     </div>
-  </div>
+  </a>
 
-  <div class="mood">
+  <a class="mood moodLink" href="modes.html?mood=neutral">
     <div class="cardOuter">
       <div class="cardInner">
-        <img class="blobimg" src="assets/mood-blobs/neutral.svg" alt="Not sure blob">
+        <img class="blobimg"
+             src="assets/mood-blobs/neutral.svg"
+             alt="Not sure blob">
       </div>
       <p class="label">Not Sure</p>
     </div>
-  </div>
+  </a>
+
 </section>
 
   </main>
