@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Campus Calm — Tune Out</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="tuneout.css" />
+</head>
+
+<a class="backFloating" href="index.html">← Back</a>
+
+<body>
+  <main class="wrap">
+
+    <section class="playerCard" aria-label="Audio player">
+      <div class="outerCard">
+        <div class="innerCard"></div>
+
+        <div class="trackInfo">
+            <p class="trackTitle">Ambient Lo-Fi Sounds</p>
+            <p class="trackSub">A gentle loop for a short break.</p>
+        </div>
+
+        <div class="controls">
+
+          <button id="playBtn" class="btn" type="button" aria-label="Play">
+            ▶
+          </button>
+
+          <div class="timeline">
+            <input id="seek" class="seek" type="range" min="0" max="100" value="0" step="0.1" aria-label="Seek" />
+            <div class="timeRow" aria-hidden="true">
+              <span id="timeNow">0:00</span>
+              <span id="timeTotal">0:00</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <!-- Audio element: set src later -->
+      <audio id="audio" preload="metadata"></audio>
+      <!-- Later you can do: <audio id="audio" src="assets/audio/rain.mp3" preload="metadata"></audio> -->
+    </section>
+
+    <!-- Bottom-left mascot cluster -->
+    <div class="mascotCluster" aria-hidden="true">
+        <img class="mascotBlob" src="assets/tuneoutblob.svg" alt="">
+
+        <img class="noteSvg n1" src="assets/musicnote1.svg" alt="">
+        <img class="noteSvg n2" src="assets/musicnote2.svg" alt="">
+        <img class="noteSvg n3" src="assets/musicnote2.svg" alt="">
+    </div>
+
+    <p class="note">
+      Tip: Put this in the background while you work. No login. No saving. Just a moment.
+    </p>
+  </main>
+
+  <script src="tuneout.js"></script>
+</body>
+</html>
