@@ -20,11 +20,7 @@ function setPlayIcon(isPlaying) {
 
 // Click play/pause
 playBtn.addEventListener("click", async () => {
-  // If no src yet, do nothing (you’ll add it later)
-  if (!audio.src) {
-    alert("Audio not set yet. Add a file path to the <audio> tag in tuneout.html.");
-    return;
-  }
+  
 
   if (audio.paused) {
     try {

@@ -12,9 +12,10 @@
   <link rel="stylesheet" href="tuneout.css" />
 </head>
 
-<a class="backFloating" href="index.html">← Back</a>
+
 
 <body>
+  <a class="backFloating" href="index.html">← Back</a>
   <main class="wrap">
 
     <section class="playerCard" aria-label="Audio player">
@@ -44,9 +45,12 @@
 
 
 
-      <!-- Audio element: set src later -->
-      <audio id="audio" preload="metadata"></audio>
-      <!-- Later you can do: <audio id="audio" src="assets/audio/rain.mp3" preload="metadata"></audio> -->
+      <!-- Audio element: -->
+      <audio id="audio" loop>
+        <source src="assets/audio/osaka-lofi.wav" type="audio/wav">
+          Your browser does not support the audio element.
+      </audio>
+
     </section>
 
     <!-- Bottom-left mascot cluster -->
