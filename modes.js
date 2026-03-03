@@ -10,6 +10,8 @@ const momentCard = document.getElementById("momentCard");
 const journalCard = document.getElementById("journalCard");
 const tuneCard = document.getElementById("tuneCard");
 
+momentCard.href = `moment.html?mood=${mood}`;
+
 const stack = document.querySelector(".modeStack");
 
 function moveToTop(card){
