@@ -1,37 +1,34 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;500&display=swap');
 
 /* ---------- Base / Theme ---------- */
-:root {
-  --bg-1: #0f172a;
-  --bg-2: #1e293b;
-  --bg-3: #312e81;
+:root{
+  --bg: #F2E9FF;
+  --ink: #2a1f3a;
+  --cardOuter: rgba(255,255,255,.55);
+  --cardBorder: rgba(0,0,0,.06);
+  --shadow: 0 18px 45px rgba(0,0,0,.12);
 
-  --text: #ffffff;
-  --muted: #c7d2fe;
+  --accent-1: #a5b4fc;
+  --accent-2: #7dd3fc;
+  --ring-track: rgba(0,0,0,.08);
 
-  --glass: rgba(255, 255, 255, 0.05);
-  --glass-border: rgba(255, 255, 255, 0.15);
-
-  --accent-1: #a5b4fc;   /* lavender */
-  --accent-2: #7dd3fc;   /* sky */
-  --ring-track: rgba(255,255,255,0.10);
-
-  --orb-min: 0.88;       /* orb scale min */
-  --orb-max: 1.16;       /* slightly less expansion for smaller feel */
+  --orb-min: 0.88;
+  --orb-max: 1.16;
 }
 
 * { box-sizing: border-box; }
 
 html, body { height: 100%; }
 
-body {
-  margin: 0;
-  font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  color: var(--text);
-  background: linear-gradient(180deg, var(--bg-1), var(--bg-2), var(--bg-3));
+body{
+  margin:0;
+  font-family: "Quicksand", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
   display: grid;
   place-items: center;
   overflow: hidden;
+  position: relative;
 }
 
 /* ---------- Glass Container Card ---------- */
@@ -185,29 +182,35 @@ body {
 }
 
 .btn {
-  background: #a5b4fc;
-  color: #1e1b4b;
-  font-weight: bold;
+  background: var(--ink);
+  color: white;
+  font-weight: 600;
   border: none;
   border-radius: 999px;
-  padding: 8px 14px;                    /* smaller buttons */
+  padding: 8px 16px;
   cursor: pointer;
-  transition: transform 0.2s, background 0.2s, opacity 0.2s;
+  transition: transform .2s ease, opacity .2s ease;
   font-size: 14px;
 }
 
-.btn:hover { background: #818cf8; transform: scale(1.05); }
-.btn:active { transform: scale(1.0); }
+.btn:hover {
+  transform: scale(1.05);
+  opacity: .9;
+}
+
+.btn:active {
+  transform: scale(1);
+}
 
 .btn[disabled] {
-  opacity: 0.5;
+  opacity: .4;
   cursor: not-allowed;
 }
 
 .btn--ghost {
   background: transparent;
-  color: #e5e7eb;
-  border: 1px solid rgba(255,255,255,0.2);
+  color: var(--ink);
+  border: 2px solid var(--ink);
 }
 
 .label {
@@ -217,19 +220,13 @@ body {
 }
 
 .select {
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.18);
-  color: white;
+  background: white;
+  border: 1px solid rgba(0,0,0,.15);
+  color: var(--ink);
   border-radius: 10px;
   padding: 6px 10px;
   cursor: pointer;
   font-size: 14px;
-  backdrop-filter: blur(10px);
-
-  /* removes default OS styles */
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
 }
 
 .select option {
@@ -246,15 +243,23 @@ body {
 /* ---------- Footer ---------- */
 .quote {
   margin: 14px auto 6px;
-  color: #bbf7d0;
+  color: var(--ink);
   font-size: 13px;                      /* smaller quote text */
   font-style: italic;
   max-width: 60ch;
 }
 
 .back { margin: 4px 0 0; }
-.backlink { color: #c7d2fe; text-decoration: none; font-size: 14px; }
-.backlink:hover { text-decoration: underline; }
+.backlink {
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.backlink:hover {
+  text-decoration: underline;
+}
 
 /* ---------- Reduced Motion ---------- */
 @media (prefers-reduced-motion: reduce) {
@@ -278,40 +283,80 @@ h1 {
   font-size: 14px;
   color: var(--muted);
 }
+/* MOOD THEMES */
 
-.circles{
+body.theme-good{
+  --bg: #FFF7C8;
+  --ink: #5b4a16;
+  --accent-1: #facc15;
+  --accent-2: #fde68a;
+}
+
+body.theme-rough{
+  --bg: #DCEBFF;
+  --ink: #1f3a63;
+  --accent-1: #60a5fa;
+  --accent-2: #93c5fd;
+}
+
+body.theme-overwhelmed{
+  --bg: #b0ade0;
+  --ink: #3a2564;
+  --accent-1: #8b5cf6;
+  --accent-2: #c4b5fd;
+}
+
+body.theme-neutral{
+  --bg: #FFE1F0;
+  --ink: #6a2c4d;
+  --accent-1: #ec4899;
+  --accent-2: #f9a8d4;
+}
+
+/* Floating PNG blobs */
+
+body::before,
+body::after{
+  content: "";
   position: fixed;
-  inset: 0;
-  list-style:none;
-  margin:0;
-  padding:0;
-  z-index:0;
+  width: 260px;
+  height: 260px;
+  background: url("assets/mainblob.svg") no-repeat center/contain;
+  opacity: 0.15;
+  pointer-events: none;
+  z-index: 0;
+  animation: floatBlob 20s ease-in-out infinite;
 }
 
-.circles li{
-  position:absolute;
-  bottom:-180px;
-  background: rgba(165,180,252,0.08);
-  border-radius: 40% 60% 65% 35% / 48% 52% 48% 52%;
-  animation: rise 28s linear infinite;
-  opacity:0;
-  filter: blur(6px);
+body::before{
+  top: 8%;
+  left: 8%;
 }
 
-.circles li:nth-child(1){left:10%;width:90px;height:90px;animation-duration:22s}
-.circles li:nth-child(2){left:25%;width:40px;height:40px;animation-duration:28s}
-.circles li:nth-child(3){left:40%;width:70px;height:70px;animation-duration:24s}
-.circles li:nth-child(4){left:55%;width:30px;height:30px;animation-duration:30s}
-.circles li:nth-child(5){left:70%;width:85px;height:85px;animation-duration:26s}
-.circles li:nth-child(6){left:85%;width:50px;height:50px;animation-duration:32s}
-.circles li:nth-child(7){left:15%;width:60px;height:60px;animation-duration:27s}
-.circles li:nth-child(8){left:35%;width:25px;height:25px;animation-duration:34s}
-.circles li:nth-child(9){left:65%;width:45px;height:45px;animation-duration:29s}
-.circles li:nth-child(10){left:80%;width:75px;height:75px;animation-duration:31s}
+body::after{
+  bottom: 10%;
+  right: 10%;
+  animation-duration: 24s;
+}
 
-@keyframes rise{
-  0%{transform:translateY(0) rotate(0);opacity:0}
-  20%{opacity:.7}
-  50%{transform:translateY(-55vh) rotate(180deg)}
-  100%{transform:translateY(-115vh) rotate(360deg);opacity:0}
+@keyframes floatBlob{
+  0%{ transform: translateY(0px); }
+  50%{ transform: translateY(-20px); }
+  100%{ transform: translateY(0px); }
+}
+
+.momentLogo{
+  position: fixed;
+  top: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 180px;
+  z-index: 3;
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float{
+  0%{ transform: translateX(-50%) translateY(0px); }
+  50%{ transform: translateX(-50%) translateY(-6px); }
+  100%{ transform: translateX(-50%) translateY(0px); }
 }
