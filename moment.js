@@ -1,4 +1,7 @@
 (function () {
+  const params = new URLSearchParams(window.location.search);
+  const mood = params.get("mood") || "neutral";
+document.body.classList.add(`theme-${mood}`);
   const orb = document.getElementById('orb');
   const ringProgress = document.getElementById('ringProgress');
   const cueEl = document.getElementById('cue');
