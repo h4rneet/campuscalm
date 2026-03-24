@@ -11,6 +11,8 @@ const journalCard = document.getElementById("journalCard");
 const tuneCard = document.getElementById("tuneCard");
 
 momentCard.href = `moment.html?mood=${mood}`;
+journalCard.href = `journal.html?mood=${mood}`;
+tuneCard.href = `tuneout.html?mood=${mood}`;
 
 const stack = document.querySelector(".modeStack");
 

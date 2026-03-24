@@ -2,6 +2,11 @@ const releaseBtn = document.getElementById("releaseBtn");
 const journalInput = document.getElementById("journalInput");
 const affirmation = document.getElementById("affirmation");
 
+const params = new URLSearchParams(window.location.search);
+const mood = params.get("mood") || "neutral";
+
+document.getElementById("backBtn").href = `modes.html?mood=${mood}`;
+
 releaseBtn.addEventListener("click", () => {
   journalInput.value = "";
   affirmation.style.display = "block";

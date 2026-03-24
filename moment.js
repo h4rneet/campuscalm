@@ -14,6 +14,8 @@ document.body.classList.add(`theme-${mood}`);
 
   const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+document.getElementById("backBtn").href = `modes.html?mood=${mood}`;
+
   const QUOTES = [
     '“A short pause can soften a long day.”',
     '“Breathe in calm, breathe out tension.”',

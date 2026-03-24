@@ -109,7 +109,7 @@ body{
   transform: translateY(-2px);
 }
 
-/* THEMES (your requested palette) */
+/* THEMES */
 body.theme-good{
   --bg: #FFF7C8;     /* light yellow */
   --ink: #5b4a16;

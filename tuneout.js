@@ -6,6 +6,11 @@ const seek = document.getElementById("seek");
 const timeNow = document.getElementById("timeNow");
 const timeTotal = document.getElementById("timeTotal");
 
+const params = new URLSearchParams(window.location.search);
+const mood = params.get("mood") || "neutral";
+
+document.getElementById("backBtn").href = `modes.html?mood=${mood}`;
+
 function formatTime(seconds) {
   if (!Number.isFinite(seconds)) return "0:00";
   const m = Math.floor(seconds / 60);
