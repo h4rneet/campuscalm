@@ -249,16 +249,27 @@ body{
   max-width: 60ch;
 }
 
-.back { margin: 4px 0 0; }
-.backlink {
-  color: var(--ink);
+.backFloating{
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: #5F4D7D;
+  color: #fff;
+  padding: 12px 16px;
+  border-radius: 18px;
   text-decoration: none;
   font-weight: 600;
-  font-size: 14px;
+  box-shadow: 0 10px 25px rgba(0,0,0,.15);
+  transition: 0.2s ease;
 }
 
-.backlink:hover {
-  text-decoration: underline;
+.backFloating:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 14px 35px rgba(0,0,0,.2);
+}
+
+.back:hover{
+  background: rgba(255,255,255,.7);
 }
 
 /* ---------- Reduced Motion ---------- */
