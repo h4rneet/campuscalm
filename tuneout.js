@@ -18,53 +18,70 @@ function formatTime(seconds) {
   return `${m}:${String(s).padStart(2, "0")}`;
 }
 
-function setPlayIcon(isPlaying) {
-  playBtn.textContent = isPlaying ? "❚❚" : "▶";
-  playBtn.setAttribute("aria-label", isPlaying ? "Pause" : "Play");
+function setPlayIcon(button, isPlaying) {
+  button.textContent = isPlaying ? "❚❚" : "▶";
+  button.setAttribute("aria-label", isPlaying ? "Pause" : "Play");
 }
 
-// Click play/pause
-playBtn.addEventListener("click", async () => {
-  
+const cards = document.querySelectorAll(".playerCard");
 
-  if (audio.paused) {
-    try {
-      await audio.play();
-      setPlayIcon(true);
-    } catch (e) {
-      console.error(e);
+cards.forEach((card) => {
+  const audio = card.querySelector(".audio");
+  const playBtn = card.querySelector(".playBtn");
+  const seek = card.querySelector(".seek");
+  const timeNow = card.querySelector(".timeNow");
+  const timeTotal = card.querySelector(".timeTotal");
+
+  playBtn.addEventListener("click", async () => {
+    const hasSource = audio.querySelector("source") && audio.querySelector("source").getAttribute("src");
+
+    if (!hasSource) return;
+
+    if (audio.paused) {
+      try {
+        cards.forEach((otherCard) => {
+          const otherAudio = otherCard.querySelector(".audio");
+          const otherBtn = otherCard.querySelector(".playBtn");
+
+          if (otherAudio !== audio) {
+            otherAudio.pause();
+            setPlayIcon(otherBtn, false);
+          }
+        });
+
+        await audio.play();
+        setPlayIcon(playBtn, true);
+      } catch (e) {
+        console.error(e);
+      }
+    } else {
+      audio.pause();
+      setPlayIcon(playBtn, false);
     }
-  } else {
-    audio.pause();
-    setPlayIcon(false);
-  }
-});
+  });
 
-// When metadata loads, update duration
-audio.addEventListener("loadedmetadata", () => {
-  timeTotal.textContent = formatTime(audio.duration);
-  seek.value = "0";
-});
+  audio.addEventListener("loadedmetadata", () => {
+    timeTotal.textContent = formatTime(audio.duration);
+    seek.value = "0";
+  });
 
-// Update seek bar while playing
-audio.addEventListener("timeupdate", () => {
-  if (!Number.isFinite(audio.duration) || audio.duration <= 0) return;
+  audio.addEventListener("timeupdate", () => {
+    if (!Number.isFinite(audio.duration) || audio.duration <= 0) return;
 
-  const progress = (audio.currentTime / audio.duration) * 100;
-  seek.value = String(progress);
-  timeNow.textContent = formatTime(audio.currentTime);
-});
+    const progress = (audio.currentTime / audio.duration) * 100;
+    seek.value = String(progress);
+    timeNow.textContent = formatTime(audio.currentTime);
+  });
 
-// Scrub
-seek.addEventListener("input", () => {
-  if (!Number.isFinite(audio.duration) || audio.duration <= 0) return;
-  const target = (Number(seek.value) / 100) * audio.duration;
-  audio.currentTime = target;
-});
+  seek.addEventListener("input", () => {
+    if (!Number.isFinite(audio.duration) || audio.duration <= 0) return;
+    const target = (Number(seek.value) / 100) * audio.duration;
+    audio.currentTime = target;
+  });
 
-// Reset UI when ended
-audio.addEventListener("ended", () => {
-  setPlayIcon(false);
-  seek.value = "0";
-  timeNow.textContent = "0:00";
+  audio.addEventListener("ended", () => {
+    setPlayIcon(playBtn, false);
+    seek.value = "0";
+    timeNow.textContent = "0:00";
+  });
 });

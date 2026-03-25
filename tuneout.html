@@ -18,50 +18,108 @@
   <a class="backFloating" id="backBtn" href="modes.html">← Back</a>
   <main class="wrap">
 
-    <section class="playerCard" aria-label="Audio player">
-      <div class="outerCard">
-        <div class="innerCard"></div>
+<section class="playerGrid" aria-label="Audio players">
 
-        <div class="trackInfo">
-            <p class="trackTitle">Ambient Lo-Fi Sounds</p>
-            <p class="trackSub">A gentle loop for a short break.</p>
-        </div>
+  <!-- Card 1 -->
+  <article class="playerCard" aria-label="Ambient Lo-Fi Sounds">
+    <div class="outerCard">
+      <div class="innerCard gradient1"></div>
 
-        <div class="controls">
+      <div class="trackInfo">
+        <p class="trackTitle">Ambient Lo-Fi Sounds</p>
+        <p class="trackSub">A gentle loop for a short break.</p>
+      </div>
 
-          <button id="playBtn" class="btn" type="button" aria-label="Play">
-            ▶
-          </button>
+      <div class="controls">
+        <button class="btn playBtn" type="button" aria-label="Play">▶</button>
 
-          <div class="timeline">
-            <input id="seek" class="seek" type="range" min="0" max="100" value="0" step="0.1" aria-label="Seek" />
-            <div class="timeRow" aria-hidden="true">
-              <span id="timeNow">0:00</span>
-              <span id="timeTotal">0:00</span>
-            </div>
+        <div class="timeline">
+          <input class="seek" type="range" min="0" max="100" value="0" step="0.1" aria-label="Seek" />
+          <div class="timeRow" aria-hidden="true">
+            <span class="timeNow">0:00</span>
+            <span class="timeTotal">0:00</span>
           </div>
         </div>
       </div>
+    </div>
 
+    <p class="audioCredit">
+      “Late Nights In Osaka” by 
+      <a href="https://freesound.org/people/YellowTree/" target="_blank">YellowTree</a> — 
+      <a href="https://freesound.org/s/595751/" target="_blank">Freesound</a> — 
+      Licensed under 
+      <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">
+        CC BY 4.0
+      </a>.
+    </p>
 
-      <p class="audioCredit">
-  “Late Nights In Osaka” by 
-  <a href="https://freesound.org/people/YellowTree/" target="_blank">YellowTree</a> — 
-  <a href="https://freesound.org/s/595751/" target="_blank">Freesound</a> — 
-  Licensed under 
-  <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">
-    CC BY 4.0
-  </a>.
-</p>
+    <audio class="audio" loop>
+      <source src="assets/audio/osaka-lofi.wav" type="audio/wav">
+      Your browser does not support the audio element.
+    </audio>
+  </article>
 
+  <!-- Card 2 -->
+  <article class="playerCard" aria-label="Soft Study Sounds">
+    <div class="outerCard">
+      <div class="innerCard gradient2"></div>
 
-      <!-- Audio element: -->
-      <audio id="audio" loop>
-        <source src="assets/audio/osaka-lofi.wav" type="audio/wav">
-          Your browser does not support the audio element.
-      </audio>
+      <div class="trackInfo">
+        <p class="trackTitle">Soft Study Sounds</p>
+        <p class="trackSub">Placeholder track for later.</p>
+      </div>
 
-    </section>
+      <div class="controls">
+        <button class="btn playBtn" type="button" aria-label="Play">▶</button>
+
+        <div class="timeline">
+          <input class="seek" type="range" min="0" max="100" value="0" step="0.1" aria-label="Seek" />
+          <div class="timeRow" aria-hidden="true">
+            <span class="timeNow">0:00</span>
+            <span class="timeTotal">0:00</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="audioCredit">Track coming soon.</p>
+
+    <audio class="audio" loop>
+      <!-- add source later -->
+    </audio>
+  </article>
+
+  <!-- Card 3 -->
+  <article class="playerCard" aria-label="Rainy Evening Mix">
+    <div class="outerCard">
+      <div class="innerCard gradient3"></div>
+
+      <div class="trackInfo">
+        <p class="trackTitle">Rainy Evening Mix</p>
+        <p class="trackSub">Placeholder track for later.</p>
+      </div>
+
+      <div class="controls">
+        <button class="btn playBtn" type="button" aria-label="Play">▶</button>
+
+        <div class="timeline">
+          <input class="seek" type="range" min="0" max="100" value="0" step="0.1" aria-label="Seek" />
+          <div class="timeRow" aria-hidden="true">
+            <span class="timeNow">0:00</span>
+            <span class="timeTotal">0:00</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="audioCredit">Track coming soon.</p>
+
+    <audio class="audio" loop>
+      <!-- add source later -->
+    </audio>
+  </article>
+
+</section>
 
     <!-- Bottom-left mascot cluster -->
     <div class="mascotCluster" aria-hidden="true">
