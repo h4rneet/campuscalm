@@ -1,28 +1,84 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap');
+
+:root{
+  --bg: #b0ade0;
+  --ink: #3a2564;
+  --accent-1: #8b5cf6;
+  --accent-2: #c4b5fd;
+
+  --panel: rgba(255, 255, 255, 0.82);
+  --panel-shadow: 0 20px 40px rgba(0,0,0,0.18);
+  --textarea-bg: #ffffff;
+  --placeholder: rgba(58, 37, 100, 0.45);
+  --nav-purple: #5F4D7D;
+}
 
 *{
   box-sizing: border-box;
 }
 
 body{
-  font-family: 'Nunito', sans-serif;
-  background: linear-gradient(180deg, #5e4b7a, #6a558c, #7a63a6);
   margin: 0;
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-family: 'Nunito', sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  position: relative;
+  overflow: hidden;
+}
+
+/* mood-aware themes — matched to moment.css */
+body.theme-good{
+  --bg: #FFF7C8;
+  --ink: #5b4a16;
+  --accent-1: #facc15;
+  --accent-2: #fde68a;
+  --panel: rgba(255,255,255,0.78);
+  --placeholder: rgba(91, 74, 22, 0.45);
+}
+
+body.theme-rough{
+  --bg: #DCEBFF;
+  --ink: #1f3a63;
+  --accent-1: #60a5fa;
+  --accent-2: #93c5fd;
+  --panel: rgba(255,255,255,0.78);
+  --placeholder: rgba(31, 58, 99, 0.42);
+}
+
+body.theme-overwhelmed{
+  --bg: #b0ade0;
+  --ink: #3a2564;
+  --accent-1: #8b5cf6;
+  --accent-2: #c4b5fd;
+  --panel: rgba(255,255,255,0.78);
+  --placeholder: rgba(58, 37, 100, 0.42);
+}
+
+body.theme-neutral{
+  --bg: #FFE1F0;
+  --ink: #6a2c4d;
+  --accent-1: #ec4899;
+  --accent-2: #f9a8d4;
+  --panel: rgba(255,255,255,0.8);
+  --placeholder: rgba(106, 44, 77, 0.42);
 }
 
 .container{
-  position: relative; /* REQUIRED */
+  position: relative;
+  z-index: 2;
   text-align: center;
-  background: rgba(239, 230, 255, 0.92);
   width: 90%;
   max-width: 420px;
-  padding: 60px 42px 32px; /* extra top space */
+  padding: 60px 42px 32px;
   border-radius: 28px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+  background: var(--panel);
+  box-shadow: var(--panel-shadow);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .logo{
@@ -31,58 +87,58 @@ body{
   left: 50%;
   transform: translateX(-50%);
   width: 90px;
-  z-index: 10; /* ensures it sits above the box */
+  z-index: 10;
 }
 
-
-
-
 h1{
+  margin: 0.5rem 0 6px;
   font-size: 26px;
   font-weight: 700;
-  margin: 0.5rem 0 6px;
-  color: #3b2f4a;
+  color: var(--ink);
 }
 
 .subtitle{
-  font-size: 14px;
-  color: #6b5a82;
   margin-bottom: 22px;
+  font-size: 14px;
+  color: var(--ink);
+  opacity: 0.72;
 }
 
 textarea{
   width: 100%;
   height: 150px;
   padding: 14px;
-  border-radius: 18px;
-  border: none;
-  background: #ffffff;
-  color: #3b2f4a;
   resize: none;
   outline: none;
+  border: none;
+  border-radius: 18px;
+  background: var(--textarea-bg);
+  color: var(--ink);
   font-size: 14px;
   box-shadow: inset 0 4px 8px rgba(0,0,0,0.05);
 }
 
 textarea::placeholder{
-  color: #9a8fb0;
+  color: var(--placeholder);
 }
 
 textarea:focus{
-  box-shadow: 0 0 0 2px rgba(122, 99, 166, 0.35);
+  box-shadow:
+    inset 0 4px 8px rgba(0,0,0,0.05),
+    0 0 0 2px var(--accent-1);
 }
 
 button{
   margin-top: 18px;
   padding: 10px 28px;
-  border-radius: 999px;
   border: none;
-  background: #7a63a6;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
   color: #ffffff;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
   box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 button:hover{
@@ -91,26 +147,27 @@ button:hover{
 }
 
 #affirmation{
-  margin-top: 18px;
-  color: #6b5a82;
   display: none;
+  margin-top: 18px;
   font-size: 14px;
+  color: var(--ink);
+  opacity: 0.78;
 }
 
-/* Back button */
+/* back button */
 .backFloating{
   position: fixed;
-  bottom: 24px;
   right: 24px;
+  bottom: 24px;
   z-index: 9999;
-  background: #5F4D7D;
-  color: #fff;
   padding: 12px 16px;
   border-radius: 18px;
+  background: var(--nav-purple);
+  color: #fff;
   text-decoration: none;
   font-weight: 600;
   box-shadow: 0 10px 25px rgba(0,0,0,.15);
-  transition: 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .backFloating:hover{
@@ -118,30 +175,50 @@ button:hover{
   box-shadow: 0 14px 35px rgba(0,0,0,.2);
 }
 
+/* top-left home logo */
 .homeLogo{
   position: fixed;
   top: 20px;
   left: 20px;
   z-index: 20;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
-  background: #5F4D7D; /* same as back button */
-  border-radius: 20px;
   padding: 10px 12px;
-
+  border-radius: 20px;
+  background: var(--nav-purple);
   box-shadow: 0 10px 25px rgba(0,0,0,.18);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .homeLogo img{
-  width: 65px;  
+  width: 65px;
   height: auto;
 }
 
 .homeLogo:hover{
   transform: translateY(-3px);
   box-shadow: 0 14px 35px rgba(0,0,0,.25);
+}
+
+@media (max-width: 600px){
+  .container{
+    width: calc(100% - 32px);
+    padding: 56px 22px 26px;
+  }
+
+  .logo{
+    width: 78px;
+    top: -34px;
+  }
+
+  .homeLogo img{
+    width: 54px;
+  }
+
+  body::before,
+  body::after{
+    width: 180px;
+    height: 180px;
+  }
 }
