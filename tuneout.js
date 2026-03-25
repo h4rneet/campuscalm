@@ -5,6 +5,16 @@ const mood = params.get("mood") || "neutral";
 
 document.getElementById("backBtn").href = `modes.html?mood=${mood}`;
 
+if (mood === "good") {
+  document.body.classList.add("theme-good");
+} else if (mood === "rough") {
+  document.body.classList.add("theme-rough");
+} else if (mood === "overwhelmed") {
+  document.body.classList.add("theme-overwhelmed");
+} else {
+  document.body.classList.add("theme-neutral");
+}
+
 function formatTime(seconds) {
   if (!Number.isFinite(seconds)) return "0:00";
   const m = Math.floor(seconds / 60);

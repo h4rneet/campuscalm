@@ -1,7 +1,7 @@
 :root{
-  --bg: #f1ecf8;
-  --outer: #5F4D7D;
-  --textDark: #1F1630;
+  --bg: #b0ade0;
+  --outer: #6752A8;
+  --textDark: #3a2564;
   --textLight: rgba(255,255,255,.92);
   --textLightSoft: rgba(255,255,255,.75);
 }
@@ -17,26 +17,87 @@ body{
   font-family: "Quicksand", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 }
 
+/* MOOD THEMES — same palette as moment */
+
+body.theme-good{
+  --bg: #FFF7C8;
+  --outer: #dfc687;
+  --textDark: #5b4a16;
+  --textLight: rgba(255,255,255,.92);
+  --textLightSoft: rgba(255,255,255,.75);
+}
+
+body.theme-rough{
+  --bg: #DCEBFF;
+  --outer: #4C6E97;
+  --textDark: #1f3a63;
+  --textLight: rgba(255,255,255,.92);
+  --textLightSoft: rgba(255,255,255,.75);
+}
+
+body.theme-overwhelmed{
+  --bg: #b0ade0;
+  --outer: #6752A8;
+  --textDark: #3a2564;
+  --textLight: rgba(255,255,255,.92);
+  --textLightSoft: rgba(255,255,255,.75);
+}
+
+body.theme-neutral{
+  --bg: #FFE1F0;
+  --outer: #B85D82;
+  --textDark: #6a2c4d;
+  --textLight: rgba(255,255,255,.92);
+  --textLightSoft: rgba(255,255,255,.75);
+}
+
 .wrap{
   max-width: 1400px;
   margin: 0 auto;
   padding: 34px 18px 60px;
 }
 
-/* back button */
+/* top-left home logo */
+.homeLogo{
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #5F4D7D; /* fixed purple */
+  border-radius: 20px;
+  padding: 10px 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,.18);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.homeLogo img{
+  width: 65px;
+  height: auto;
+}
+
+.homeLogo:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 14px 35px rgba(0,0,0,.25);
+}
+
+/* bottom-right back button */
 .backFloating{
   position: fixed;
   bottom: 24px;
   right: 24px;
-  background: #5F4D7D;
+  z-index: 20;
+  background: #5F4D7D; /* fixed purple */
   color: #fff;
+
   padding: 12px 16px;
   border-radius: 18px;
   text-decoration: none;
   font-weight: 600;
   box-shadow: 0 10px 25px rgba(0,0,0,.15);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  z-index: 20;
 }
 
 .backFloating:hover{
@@ -49,7 +110,7 @@ body{
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  gap: 28px;
+  gap: 32px;
   flex-wrap: wrap;
   margin-top: 10px;
   padding: 0 60px;
@@ -72,7 +133,7 @@ body{
 
 .innerCard{
   position: relative;
-  min-height: 210px;
+  min-height: 180px;
   border-radius: 20px;
   overflow: hidden;
   border: 1px solid rgba(255,255,255,.35);
@@ -81,20 +142,6 @@ body{
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.vinyl{
-  width: 160px;
-  height: 160px;
-  object-fit: contain;
-  animation: spin 6s linear infinite;
-  animation-play-state: paused;
-  filter: drop-shadow(0 8px 16px rgba(0,0,0,.15));
-}
-
-@keyframes spin{
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
 }
 
 .gradient1{
@@ -118,6 +165,20 @@ body{
 @keyframes gradientShift{
   0% { background-position: 0% 50%; }
   100% { background-position: 100% 50%; }
+}
+
+.vinyl{
+  width: 110px;
+  height: 110px;
+  object-fit: contain;
+  animation: spin 6s linear infinite;
+  animation-play-state: paused;
+  filter: drop-shadow(0 8px 16px rgba(0,0,0,.15));
+}
+
+@keyframes spin{
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 .trackInfo{
@@ -204,15 +265,15 @@ body{
   max-width: 560px;
   text-align: center;
   color: rgba(31,22,48,.65);
-  font-size: 18px;
+  font-size: 14px;
   line-height: 1.5;
 }
 
-/* mascot cluster */
+/* left mascot cluster */
 .mascotCluster{
   position: fixed;
-  left: 20px;
-  bottom: 20px;
+  left: 26px;
+  bottom: 40px;
   width: 220px;
   height: 220px;
   pointer-events: none;
@@ -261,30 +322,17 @@ body{
   animation-delay: 1.2s;
 }
 
-@keyframes blobFloat{
-  0%   { transform: translateY(0px) rotate(-1deg); }
-  50%  { transform: translateY(-8px) rotate(1deg); }
-  100% { transform: translateY(0px) rotate(-1deg); }
-}
-
-@keyframes noteFloat{
-  0%   { transform: translateY(0px) translateX(0px) rotate(-2deg); opacity: .65; }
-  50%  { transform: translateY(-12px) translateX(6px) rotate(2deg); opacity: .95; }
-  100% { transform: translateY(0px) translateX(0px) rotate(-2deg); opacity: .65; }
-}
-
-/* New floating note cluster (right side) */
+/* right note cluster near back button */
 .noteCluster{
   position: fixed;
-  right: 90px;   /* keeps it away from back button */
-  bottom: 20px; /* slightly above back button */
+  right: 100px;
+  bottom: 40px;
   width: 120px;
   height: 120px;
   pointer-events: none;
   z-index: 10;
 }
 
-/* shared style */
 .note2{
   position: absolute;
   width: 22px;
@@ -293,7 +341,6 @@ body{
   animation: noteFloat2 3.2s ease-in-out infinite;
 }
 
-/* individual positions */
 .note2.n1{
   right: 0;
   bottom: 60px;
@@ -313,14 +360,24 @@ body{
   opacity: 0.7;
 }
 
-/* slightly different animation so it feels unique */
+@keyframes blobFloat{
+  0%   { transform: translateY(0px) rotate(-1deg); }
+  50%  { transform: translateY(-8px) rotate(1deg); }
+  100% { transform: translateY(0px) rotate(-1deg); }
+}
+
+@keyframes noteFloat{
+  0%   { transform: translateY(0px) translateX(0px) rotate(-2deg); opacity: .65; }
+  50%  { transform: translateY(-12px) translateX(6px) rotate(2deg); opacity: .95; }
+  100% { transform: translateY(0px) translateX(0px) rotate(-2deg); opacity: .65; }
+}
+
 @keyframes noteFloat2{
   0%   { transform: translateY(0px) translateX(0px) rotate(-3deg); opacity: .6; }
   50%  { transform: translateY(-10px) translateX(-4px) rotate(3deg); opacity: .95; }
   100% { transform: translateY(0px) translateX(0px) rotate(-3deg); opacity: .6; }
 }
 
-/* responsive */
 @media (max-width: 1100px){
   .playerGrid{
     padding: 0 20px;
@@ -343,38 +400,15 @@ body{
     width: 170px;
     height: 170px;
     left: 14px;
-    bottom: 90px;
+    bottom: 85px;
   }
 
   .mascotBlob{
     width: 105px;
   }
-}
 
-.homeLogo{
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  z-index: 20;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  background: #5F4D7D; /* same as back button */
-  border-radius: 20px;
-  padding: 10px 12px;
-
-  box-shadow: 0 10px 25px rgba(0,0,0,.18);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.homeLogo img{
-  width: 65px;  
-  height: auto;
-}
-
-.homeLogo:hover{
-  transform: translateY(-3px);
-  box-shadow: 0 14px 35px rgba(0,0,0,.25);
+  .noteCluster{
+    right: 90px;
+    bottom: 50px;
+  }
 }
