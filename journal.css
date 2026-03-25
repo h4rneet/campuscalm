@@ -26,6 +26,7 @@ body{
 
 .logo{
   width: 90px;
+  margin-top: -10px;   /* moves it up */
   margin-bottom: 1rem;
 }
 
