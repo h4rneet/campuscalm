@@ -117,3 +117,31 @@ button:hover{
   transform: translateY(-3px);
   box-shadow: 0 14px 35px rgba(0,0,0,.2);
 }
+
+.homeLogo{
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 20;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #5F4D7D; /* same as back button */
+  border-radius: 20px;
+  padding: 10px 12px;
+
+  box-shadow: 0 10px 25px rgba(0,0,0,.18);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.homeLogo img{
+  width: 65px;  
+  height: auto;
+}
+
+.homeLogo:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 14px 35px rgba(0,0,0,.25);
+}
