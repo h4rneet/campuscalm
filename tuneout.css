@@ -204,7 +204,7 @@ body{
   max-width: 560px;
   text-align: center;
   color: rgba(31,22,48,.65);
-  font-size: 14px;
+  font-size: 18px;
   line-height: 1.5;
 }
 
@@ -271,6 +271,53 @@ body{
   0%   { transform: translateY(0px) translateX(0px) rotate(-2deg); opacity: .65; }
   50%  { transform: translateY(-12px) translateX(6px) rotate(2deg); opacity: .95; }
   100% { transform: translateY(0px) translateX(0px) rotate(-2deg); opacity: .65; }
+}
+
+/* New floating note cluster (right side) */
+.noteCluster{
+  position: fixed;
+  right: 90px;   /* keeps it away from back button */
+  bottom: 20px; /* slightly above back button */
+  width: 120px;
+  height: 120px;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* shared style */
+.note2{
+  position: absolute;
+  width: 22px;
+  opacity: 0.85;
+  filter: drop-shadow(0 6px 10px rgba(0,0,0,.12));
+  animation: noteFloat2 3.2s ease-in-out infinite;
+}
+
+/* individual positions */
+.note2.n1{
+  right: 0;
+  bottom: 60px;
+  animation-delay: 0s;
+}
+
+.note2.n2{
+  right: 30px;
+  bottom: 20px;
+  animation-delay: 0.6s;
+}
+
+.note2.n3{
+  right: 60px;
+  bottom: 45px;
+  animation-delay: 1.2s;
+  opacity: 0.7;
+}
+
+/* slightly different animation so it feels unique */
+@keyframes noteFloat2{
+  0%   { transform: translateY(0px) translateX(0px) rotate(-3deg); opacity: .6; }
+  50%  { transform: translateY(-10px) translateX(-4px) rotate(3deg); opacity: .95; }
+  100% { transform: translateY(0px) translateX(0px) rotate(-3deg); opacity: .6; }
 }
 
 /* responsive */
