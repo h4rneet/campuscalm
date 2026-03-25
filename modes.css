@@ -15,6 +15,13 @@ body{
   font-family: "Quicksand", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 }
 
+.modeCard.recommended{
+  box-shadow:
+    0 0 0 2px var(--accent-1),
+    0 0 22px var(--accent-2),
+    0 12px 30px rgba(0,0,0,0.12);
+}
+
 .wrap{
   max-width: 850px;
   margin: 0 auto;
@@ -111,25 +118,33 @@ body{
 
 /* THEMES */
 body.theme-good{
-  --bg: #FFF7C8;     /* light yellow */
+  --bg: #FFF7C8;
   --ink: #5b4a16;
   --cardOuter: rgba(255,255,255,.62);
+  --accent-1: #facc15;
+  --accent-2: #fde68a;
 }
 
 body.theme-rough{
-  --bg: #DCEBFF;     /* calm blue */
+  --bg: #DCEBFF;
   --ink: #1f3a63;
   --cardOuter: rgba(255,255,255,.58);
+  --accent-1: #60a5fa;
+  --accent-2: #93c5fd;
 }
 
 body.theme-overwhelmed{
-  --bg: #b0ade0;     /* purple */
+  --bg: #b0ade0;
   --ink: #3a2564;
   --cardOuter: rgba(255,255,255,.54);
+  --accent-1: #8b5cf6;
+  --accent-2: #c4b5fd;
 }
 
 body.theme-neutral{
-  --bg: #FFE1F0;     /* pink */
+  --bg: #FFE1F0;
   --ink: #6a2c4d;
   --cardOuter: rgba(255,255,255,.58);
+  --accent-1: #ec4899;
+  --accent-2: #f9a8d4;
 }
