@@ -15,20 +15,30 @@ body{
 }
 
 .container{
+  position: relative;   
   text-align: center;
   background: rgba(239, 230, 255, 0.92);
   width: 90%;
   max-width: 420px;
-  padding: 32px 42px;
+  padding: 48px 42px 32px;  
   border-radius: 28px;
   box-shadow: 0 20px 40px rgba(0,0,0,0.2);
 }
 
+
 .logo{
+  position: absolute;
+  top: -45px;
+  left: 50%;
+  transform: translateX(-50%);
   width: 90px;
-  margin-top: -10px;   /* moves it up */
-  margin-bottom: 1rem;
+  background: #efe6ff;
+  padding: 10px;
+  border-radius: 50%;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
+
+
 
 h1{
   font-size: 26px;
