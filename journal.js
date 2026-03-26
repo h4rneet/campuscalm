@@ -32,6 +32,7 @@ releaseBtn.addEventListener("click", () => {
     affirmation.style.opacity = opacity;
     if (opacity >= 1) clearInterval(fade);
   }, 50);
+const colors = ["#ff6b6b", "#ffd93d", "#6bcB77", "#4d96ff", "#ff9f1c", "#c77dff"];
 
   // 🎉 CONFETTI
   for (let i = 0; i < 80; i++) {
