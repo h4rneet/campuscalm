@@ -34,22 +34,30 @@ releaseBtn.addEventListener("click", () => {
   }, 50);
 const colors = ["#ff6b6b", "#ffd93d", "#6bcB77", "#4d96ff", "#ff9f1c", "#c77dff"];
 
-  // 🎉 CONFETTI
+  //  CONFETTI
+if (confettiContainer) {
+
+  const colors = ["#ff6b6b", "#ffd93d", "#6bcB77", "#4d96ff", "#ff9f1c", "#c77dff"];
+
   for (let i = 0; i < 80; i++) {
-  let piece = document.createElement("span");
+    let piece = document.createElement("span");
 
-  piece.style.left = Math.random() * 100 + "vw";
-  piece.style.animationDelay = Math.random() * 0.5 + "s";
-  piece.style.transform = `rotate(${Math.random()*360}deg)`;
+    piece.style.position = "absolute"; // 🔴 important safety
+    piece.style.top = "0px";           // 🔴 ensures it starts on screen
+    piece.style.left = Math.random() * window.innerWidth + "px";
 
-  // 🎨 ADD THIS LINE
-  piece.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+    piece.style.width = "8px";
+    piece.style.height = "12px";
 
-  confettiContainer.appendChild(piece);
+    piece.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
 
+    piece.style.animation = "fall 1.5s linear forwards";
+
+    confettiContainer.appendChild(piece);
 
     setTimeout(() => {
       piece.remove();
     }, 1500);
   }
-});
+}
+
