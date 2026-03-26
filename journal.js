@@ -1,6 +1,7 @@
 const releaseBtn = document.getElementById("releaseBtn");
 const journalInput = document.getElementById("journalInput");
 const affirmation = document.getElementById("affirmation");
+const confettiContainer = document.getElementById("confetti");
 
 const params = new URLSearchParams(window.location.search);
 const mood = params.get("mood") || "neutral";
@@ -18,7 +19,10 @@ if (mood === "good") {
 }
 
 releaseBtn.addEventListener("click", () => {
+  // clear text
   journalInput.value = "";
+
+  // show affirmation (fade in)
   affirmation.style.display = "block";
   affirmation.style.opacity = 0;
 
@@ -28,4 +32,19 @@ releaseBtn.addEventListener("click", () => {
     affirmation.style.opacity = opacity;
     if (opacity >= 1) clearInterval(fade);
   }, 50);
+
+  // 🎉 CONFETTI
+  for (let i = 0; i < 80; i++) {
+    let piece = document.createElement("span");
+
+    piece.style.left = Math.random() * 100 + "vw";
+    piece.style.animationDelay = Math.random() * 0.5 + "s";
+    piece.style.transform = `rotate(${Math.random()*360}deg)`;
+
+    confettiContainer.appendChild(piece);
+
+    setTimeout(() => {
+      piece.remove();
+    }, 1500);
+  }
 });
