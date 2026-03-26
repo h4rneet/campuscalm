@@ -25,7 +25,9 @@
 
     <textarea id="journalInput" placeholder="Type what you want to release..."></textarea>
 
-    <button id="releaseBtn">Release</button>
+    <button onclick="releaseNote()">Release</button>
+
+
 
     <p id="affirmation">🌙 Your thoughts are released. You are safe.</p>
   </div>
@@ -34,4 +36,29 @@
   <div class="confetti" id="confetti"></div>
 
 </body>
+  <script>
+function releaseNote() {
+  // show affirmation
+  document.getElementById("affirmation").style.display = "block";
+
+  // create confetti
+  const confettiContainer = document.getElementById("confetti");
+
+  for (let i = 0; i < 80; i++) {
+    let piece = document.createElement("span");
+
+    piece.style.left = Math.random() * 100 + "vw";
+    piece.style.animationDelay = Math.random() * 0.5 + "s";
+    piece.style.transform = `rotate(${Math.random()*360}deg)`;
+
+    confettiContainer.appendChild(piece);
+
+    // remove after animation
+    setTimeout(() => {
+      piece.remove();
+    }, 1500);
+  }
+}
+</script>
+
 </html>
