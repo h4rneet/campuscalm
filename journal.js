@@ -35,13 +35,17 @@ releaseBtn.addEventListener("click", () => {
 
   // 🎉 CONFETTI
   for (let i = 0; i < 80; i++) {
-    let piece = document.createElement("span");
+  let piece = document.createElement("span");
 
-    piece.style.left = Math.random() * 100 + "vw";
-    piece.style.animationDelay = Math.random() * 0.5 + "s";
-    piece.style.transform = `rotate(${Math.random()*360}deg)`;
+  piece.style.left = Math.random() * 100 + "vw";
+  piece.style.animationDelay = Math.random() * 0.5 + "s";
+  piece.style.transform = `rotate(${Math.random()*360}deg)`;
 
-    confettiContainer.appendChild(piece);
+  // 🎨 ADD THIS LINE
+  piece.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+
+  confettiContainer.appendChild(piece);
+
 
     setTimeout(() => {
       piece.remove();
